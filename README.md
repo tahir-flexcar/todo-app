@@ -1,24 +1,7 @@
-# README
+# Screenshots:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<img width="1143" alt="Screenshot 2023-12-08 at 8 29 39 PM" src="https://github.com/tahir-flexcar/todo-app/assets/148218649/47f16176-a759-4162-818e-b6c775afa59d">
 
-Things you may want to cover:
+<img width="1139" alt="Screenshot 2023-12-08 at 8 31 06 PM" src="https://github.com/tahir-flexcar/todo-app/assets/148218649/e5c3c8b8-73c1-413a-bad7-a623af9eaa0a">
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<img width="1140" alt="Screenshot 2023-12-08 at 8 31 42 PM" src="https://github.com/tahir-flexcar/todo-app/assets/148218649/84d64c17-64d3-44f9-a505-d79edecc5bab">
