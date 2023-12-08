@@ -1,0 +1,20 @@
+<%= form_with(model: todo) do |form| %>
+  <% if todo.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
+
+      <div class="form-errors">
+        <div class="alert shadow-lg alert-error text-white">
+          <% todo.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="flex" >
+      <%= form.text_field :title, class: "outline-none block w-[80%] mr-2 px-5 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6", placeholder: "Todo..." %>
+      <%= form.submit "Add", class: "cursor-pointer w-[20%] rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+  </div>
+<% end %>

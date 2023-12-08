@@ -1,0 +1,11 @@
+<div class="mt-8" >
+    <% @todos.each do |todo| %>
+        <div class="flex justify-between items-center w-full px-5 py-3 mb-2 shadow-md border border-solid rounded" >
+            <div class="flex items-center">
+                <%= button_to "", toggle_todo_path(todo.id), method: :post, class: "w-4 h-4 border border-indigo-600 rounded mr-3 sel " + (todo.completed ? "bg-indigo-600" : "") %>
+                <span class="<%= todo.completed ? "line-through" : "" %>" > <%= todo.title %> </span>
+            </div>
+            <%= button_to "Delete", todo, method: :delete, class: "cursor-pointer rounded-md text-m text-red-700 shadow-sm" %>
+        </div>
+    <% end %>
+</div>
