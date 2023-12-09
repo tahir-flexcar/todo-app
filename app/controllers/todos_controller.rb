@@ -4,7 +4,7 @@ class TodosController < ApplicationController
 
   # GET /todos or /todos.json
   def index
-    @todos = Todo.all
+    @todos = Todo.ordered
   end
 
   # GET /todos/1 or /todos/1.json
@@ -24,7 +24,7 @@ class TodosController < ApplicationController
   # POST /todos or /todos.json
   def create
     @todo = Todo.new(todo_create_params)
-
+    @todo.position = Section.first.todos.last.position + 1
     respond_to do |format|
       if @todo.save
         format.html { redirect_to new_todo_path, notice: "Todo '" + @todo.title + "' was successfully created." }
@@ -39,7 +39,9 @@ class TodosController < ApplicationController
   # PATCH/PUT /todos/1 or /todos/1.json
   def update
     @todo.section_id = todo_update_params[:sectionId]
+    @todo.position = todo_update_params[:position]
     @todo.save
+    @todo.insert_at(todo_update_params[:position].to_i)
     render :new
   end
 

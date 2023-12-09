@@ -3,7 +3,7 @@
         <div class="flex-1">
             <h2 class="font-bold mb-3">Not started</h2>
             <div id="<%= "section-#{@sections.first.id}" %>" data-controller="sortable" >
-                <% @sections.first.todos.each do |todo| %>
+                <% @sections.first.todos.ordered.each do |todo| %>
                     <div id="<%= "item-#{todo.id}" %>" class="flex justify-between items-center w-full px-5 py-3 mb-2 shadow-md border border-solid rounded">
                         <div class="flex items-center">
                             <span> <%= todo.title %> </span>
@@ -17,7 +17,7 @@
         <div class="flex-1">
             <h2 class="font-bold mb-3">In progress</h2>
             <div id="<%= "section-#{@sections.second.id}" %>" data-controller="sortable" >
-                <% @sections.second.todos.each do |todo| %>
+                <% @sections.second.todos.ordered.each do |todo| %>
                     <div id="<%= "item-#{todo.id}" %>" class="flex justify-between items-center w-full px-5 py-3 mb-2 shadow-md border border-solid rounded">
                         <div class="flex items-center">
                             <span> <%= todo.title %> </span>
@@ -31,7 +31,7 @@
         <div class="flex-1">
             <h2 class="font-bold mb-3">Done</h2>
             <div id="<%= "section-#{@sections.third.id}" %>" data-controller="sortable" >
-                <% @sections.third.todos.each do |todo| %>
+                <% @sections.third.todos.ordered.each do |todo| %>
                     <div id="<%= "item-#{todo.id}" %>" class="flex justify-between items-center w-full px-5 py-3 mb-2 shadow-md border border-solid rounded">
                         <div class="flex items-center">
                             <span> <%= todo.title %> </span>
