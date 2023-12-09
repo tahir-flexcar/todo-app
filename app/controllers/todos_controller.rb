@@ -24,7 +24,11 @@ class TodosController < ApplicationController
   # POST /todos or /todos.json
   def create
     @todo = Todo.new(todo_create_params)
-    @todo.position = Section.first.todos.last.position + 1
+    if Section.first.todos.last.nil?
+      @todo.position = 0
+    else
+      @todo.position = Section.first.todos.last.position + 1
+    end
     respond_to do |format|
       if @todo.save
         format.html { redirect_to new_todo_path, notice: "Todo '" + @todo.title + "' was successfully created." }
