@@ -1,11 +1,45 @@
 <div class="mt-8" >
-    <% @todos.each do |todo| %>
-        <div class="flex justify-between items-center w-full px-5 py-3 mb-2 shadow-md border border-solid rounded" >
-            <div class="flex items-center">
-                <%= button_to "", toggle_todo_path(todo.id), method: :post, class: "w-4 h-4 border border-indigo-600 rounded mr-3 sel " + (todo.completed ? "bg-indigo-600" : "") %>
-                <span class="<%= todo.completed ? "line-through" : "" %>" > <%= todo.title %> </span>
+    <div class="flex gap-2">
+        <div class="flex-1">
+            <h2 class="font-bold mb-3">Not started</h2>
+            <div id="<%= "section-#{@sections.first.id}" %>" data-controller="sortable" >
+                <% @sections.first.todos.each do |todo| %>
+                    <div id="<%= "item-#{todo.id}" %>" class="flex justify-between items-center w-full px-5 py-3 mb-2 shadow-md border border-solid rounded">
+                        <div class="flex items-center">
+                            <span> <%= todo.title %> </span>
+                        </div>
+                        <%= button_to "Delete", todo, method: :delete, class: "cursor-pointer rounded-md text-m text-red-700 shadow-sm" %>
+                    </div>
+                <% end %>
             </div>
-            <%= button_to "Delete", todo, method: :delete, class: "cursor-pointer rounded-md text-m text-red-700 shadow-sm" %>
         </div>
-    <% end %>
+
+        <div class="flex-1">
+            <h2 class="font-bold mb-3">In progress</h2>
+            <div id="<%= "section-#{@sections.second.id}" %>" data-controller="sortable" >
+                <% @sections.second.todos.each do |todo| %>
+                    <div id="<%= "item-#{todo.id}" %>" class="flex justify-between items-center w-full px-5 py-3 mb-2 shadow-md border border-solid rounded">
+                        <div class="flex items-center">
+                            <span> <%= todo.title %> </span>
+                        </div>
+                        <%= button_to "Delete", todo, method: :delete, class: "cursor-pointer rounded-md text-m text-red-700 shadow-sm" %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+
+        <div class="flex-1">
+            <h2 class="font-bold mb-3">Done</h2>
+            <div id="<%= "section-#{@sections.third.id}" %>" data-controller="sortable" >
+                <% @sections.third.todos.each do |todo| %>
+                    <div id="<%= "item-#{todo.id}" %>" class="flex justify-between items-center w-full px-5 py-3 mb-2 shadow-md border border-solid rounded">
+                        <div class="flex items-center">
+                            <span> <%= todo.title %> </span>
+                        </div>
+                        <%= button_to "Delete", todo, method: :delete, class: "cursor-pointer rounded-md text-m text-red-700 shadow-sm" %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
 </div>
