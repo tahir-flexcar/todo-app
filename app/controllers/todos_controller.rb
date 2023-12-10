@@ -1,6 +1,7 @@
 class TodosController < ApplicationController
   before_action :set_todo, only: %i[ show edit update destroy ]
-  before_action :find_all_sections, except: [:destroy]
+  before_action :find_all_section_todos, except: [:destroy]
+  before_action :authenticate_user!
 
   # GET /todos or /todos.json
   def index
@@ -24,6 +25,7 @@ class TodosController < ApplicationController
   # POST /todos or /todos.json
   def create
     @todo = Todo.new(todo_create_params)
+    @todo.user = current_user
     if Section.first.todos.last.nil?
       @todo.position = 0
     else
@@ -44,6 +46,7 @@ class TodosController < ApplicationController
   def update
     @todo.section_id = todo_update_params[:sectionId]
     @todo.position = todo_update_params[:position]
+    @todo.user = current_user
     @todo.save
     @todo.insert_at(todo_update_params[:position].to_i)
     render :new
@@ -74,7 +77,10 @@ class TodosController < ApplicationController
       params.permit(:title, :position, :sectionId, :id)
     end
 
-    def find_all_sections
+    def find_all_section_todos
       @sections = Section.all
+      @not_started_todos = Section.find_by(name: "Not started").todos.where(user: current_user).ordered
+      @in_progress_todos = Section.find_by(name: "In progress").todos.where(user: current_user).ordered
+      @done_todos = Section.find_by(name: "Done").todos.where(user: current_user).ordered
     end
 end

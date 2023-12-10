@@ -65,3 +65,5 @@ end
 
 
 gem "acts_as_list", "~> 1.1"
+
+gem "devise", "~> 4.9"

@@ -11,6 +11,25 @@
   </head>
 
   <body>
+    <div class="flex items-center justify-between p-5" >
+      <% if user_signed_in? %>
+        <%= link_to "Profile", edit_user_registration_path, class:"cursor-pointer rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+      <% else %>
+        <div></div>
+      <% end %>
+
+      <h1 class="text-center font-bold text-3xl" >Todo App</h1>
+
+      <% if user_signed_in? %>
+        <%= button_to "Logout", destroy_user_session_path, method: :delete, class:"cursor-pointer rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600" %>
+      <% else %>
+        <div>
+          <%= link_to "Login", new_user_session_path, class:"cursor-pointer rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+          <%= link_to "Sign up", new_user_registration_path, class:"cursor-pointer rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600" %>
+        </div>
+      <% end %>
+    </div>
+
     <%= yield %>
   </body>
 </html>
