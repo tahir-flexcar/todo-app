@@ -46,7 +46,6 @@ class TodosController < ApplicationController
   def update
     @todo.section_id = todo_update_params[:sectionId]
     @todo.position = todo_update_params[:position]
-    @todo.user = current_user
     @todo.save
     @todo.insert_at(todo_update_params[:position].to_i)
     render :new

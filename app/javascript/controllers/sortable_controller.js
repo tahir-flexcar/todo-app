@@ -17,8 +17,7 @@ export default class extends Controller {
   }
 
   onEnd(event) {
-    console.log(event);
-    const { newIndex, oldIndex, from, to, item } = event;
+    const { newIndex, to, item } = event;
     const newSectionId = to.id.split("-")[1];
     const todoId = item.id.split("-")[1];
     const url = `/todos/${todoId}`;
